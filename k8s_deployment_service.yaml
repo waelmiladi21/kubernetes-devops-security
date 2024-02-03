@@ -16,7 +16,7 @@ spec:
         app: devsecops
     spec:
       containers:
-      - image: replace
+      - image: drugman21/numeric-app
         name: devsecops-container
 ---
 apiVersion: v1
