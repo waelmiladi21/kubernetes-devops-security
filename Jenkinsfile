@@ -20,5 +20,15 @@ pipeline {
               }
             }
       }
+
+      stage ('Docker Build and Push'){
+            steps{
+                withDockerRegistry([credentialsId: 'docker-hub', url: ""]) {
+                    sh "printenv"
+                    sh "docker build -it drugman21/numeric-app ."
+                    sh "docker push drugman21/numeric-app:latest"
+                }      
+            }
+      }
   }
 }
