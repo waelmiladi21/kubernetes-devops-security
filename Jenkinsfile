@@ -46,14 +46,23 @@ pipeline {
        }
 
         stage('Vulnerability Scan - Docker') {
-          steps {
-            sh "mvn dependency-check:check"
+
+          steps{
+                dependencyCheck additionalArguments: '--scan ./ --format XML ', odcInstallation: 'DP-Check'
           }
-          post{
-            always{
-              dependencyCheckPublisher pattern: 'target/dependency-check-report.xml'
-            }
-          }
+                   post{
+                    always{
+                      dependencyCheckPublisher pattern: 'target/dependency-check-report.xml'
+                    }
+                   }
+          // steps {
+          //   sh "mvn dependency-check:check"
+          // }
+          // post{
+          //   always{
+          //     dependencyCheckPublisher pattern: 'target/dependency-check-report.xml'
+          //   }
+          // }
         }
 
       stage ('Docker Build and Push'){
