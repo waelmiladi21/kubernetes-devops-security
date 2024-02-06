@@ -46,6 +46,12 @@ pipeline {
                     sh "docker build -t drugman21/numeric-app ."
                     sh "docker push drugman21/numeric-app:latest"
                 }      
+            
+            timeout(time: 2, unit: 'MINUTES') {
+             script {
+               waitForQualityGate abortPipeline: true
+             }
+            }
             }
       }
 
