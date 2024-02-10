@@ -44,11 +44,7 @@ pipeline {
           steps {
             sh "mvn dependency-check:check"
           }
-          post{
-            always{
-              dependencyCheckPublisher pattern: 'target/dependency-check-report.xml'
-            }
-          }
+          
         }
           // steps{
           //       dependencyCheck additionalArguments: '--scan ./ --format XML ', odcInstallation: 'DP-Check'
@@ -99,6 +95,7 @@ pipeline {
       junit 'target/surefire-reports/*.xml'
       jacoco execPattern: 'target/jacoco.exec'
       //pitmutation mutationStatsFile: '**/target/pit-reports/**/mutations.xml'
+      dependencyCheckPublisher pattern: 'target/dependency-check-report.xml'
     }
   }
 }
