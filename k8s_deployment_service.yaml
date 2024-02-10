@@ -16,7 +16,7 @@ spec:
         app: devsecops
     spec:
       containers:
-      - image: drugman21/numeric-app
+      - image: replace
         name: devsecops-container
         securityContext:
           runAsNonRoot: true

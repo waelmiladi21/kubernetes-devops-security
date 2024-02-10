@@ -1,6 +1,16 @@
 pipeline {
   agent any
 
+
+  environment {
+    deploymentName = "devsecops"
+    containerName = "devsecops-container"
+    serviceName = "devsecops-svc"
+    imageName = "drugman21/numeric-app"
+    applicationURL="devsecops-demo.francecentral.cloudapp.azure.com"
+    applicationURI="/increment/99"
+  }
+
   stages {
       stage('Build Artifact - Maven') {
             steps {
@@ -95,13 +105,24 @@ pipeline {
             sh 'docker run --rm -v $(pwd):/project openpolicyagent/conftest test --policy opa-k8s-security.rego k8s_deployment_service.yaml'
         }
       }
-      stage('Kubernetes deployment') {
+      stage('Kubernetes Deployment - DEV') {
             steps {
-                withKubeConfig([credentialsId: 'kubeconfig']) {
-                    sh 'kubectl apply -f k8s_deployment_service.yaml'
-                }          
+              parallel(
+                "Deployment": {
+                  withKubeConfig([credentialsId: 'kubeconfig']) {
+                    sh 'bash k8s-deployment.sh'
+                  }  
+                },
+                "Rollout status": {
+                  withKubeConfig([credentialsId: 'kubeconfig']) {
+                    sh 'bash k8s-deployment-rollout-status.sh'
+                  }  
+                }
+              )                      
             }
       }
+
+
   }
 
   post{
