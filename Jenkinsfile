@@ -81,7 +81,7 @@ pipeline {
             steps{
                 withDockerRegistry([credentialsId: 'docker-hub', url: ""]) {
                     sh "printenv"
-                    sh "docker build -t drugman21/numeric-app ."
+                    sh "sudo docker build -t drugman21/numeric-app ."
                     sh "docker push drugman21/numeric-app:latest"
                 }      
             }
