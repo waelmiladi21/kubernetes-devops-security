@@ -7,7 +7,7 @@ pipeline {
     containerName = "devsecops-container"
     serviceName = "devsecops-svc"
     imageName = "drugman21/numeric-app"
-    applicationURL="devsecops-demo.francecentral.cloudapp.azure.com"
+    applicationURL="http://devsecops-demo.francecentral.cloudapp.azure.com"
     applicationURI="/increment/99"
   }
 
