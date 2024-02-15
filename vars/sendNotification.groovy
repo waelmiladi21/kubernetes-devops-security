@@ -124,7 +124,7 @@ attachments = [
           ], 
           "accessory": [
             "type": "image",
-            "image_url": "https://github.com/waelmiladi21/kubernetes-devops-security/blob/main/slack-emojis/github.png",
+            "image_url": "https://github.com/waelmiladi21/kubernetes-devops-security/blob/ff69a23162486e20ac77c67963d51c3b2ced303e/slack-emojis/github.png",
             "alt_text": "Github Icon"
           ]
         ],
