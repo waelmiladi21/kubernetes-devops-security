@@ -243,7 +243,13 @@ pipeline {
     //     }
     //   }
 
-      stage('Testing Slack') {
+      stage('Testing Slack - 1') {
+        steps {
+            sh 'exit 0'
+        }
+      }
+
+      stage('Testing Slack - Error Stage') {
         steps {
             sh 'exit 1'
         }
