@@ -188,25 +188,25 @@ pipeline {
         }
       }
 
-      // stage('K8S CIS Benchmark') {
-      //   steps {
-      //     script {
+      stage('K8S CIS Benchmark') {
+        steps {
+          script {
 
-      //       parallel(
-      //         "Master": {
-      //           sh "bash cis-master.sh"
-      //         },
-      //         "Etcd": {
-      //           sh "bash cis-etcd.sh"
-      //         },
-      //         "Kubelet": {
-      //           sh "bash cis-kubelet.sh"
-      //         }
-      //       )
+            parallel(
+              "Master": {
+                sh "bash cis-master.sh"
+              },
+              "Etcd": {
+                sh "bash cis-etcd.sh"
+              },
+              "Kubelet": {
+                sh "bash cis-kubelet.sh"
+              }
+            )
 
-      //     }
-      //   }
-      // }
+          }
+        }
+      }
 
         stage('K8S Deployment - PROD') {
         steps {
