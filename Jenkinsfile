@@ -8,7 +8,7 @@ pipeline {
     deploymentName = "devsecops"
     containerName = "devsecops-container"
     serviceName = "devsecops-svc"
-    imageName = "drugman21/numeric-app"
+    imageName = "drugman21/numeric-app:${GIT_COMMIT}"
     applicationURL="http://devsecops-demo.francecentral.cloudapp.azure.com"
     applicationURI="/increment/99"
   }
@@ -73,8 +73,8 @@ pipeline {
             steps{
                 withDockerRegistry([credentialsId: 'docker-hub', url: ""]) {
                     sh "printenv"
-                    sh "sudo docker build -t drugman21/numeric-app ."
-                    sh "docker push drugman21/numeric-app:latest"
+                    sh "sudo docker build -t drugman21/numeric-app:""$GIT_COMMIT"" ."
+                    sh "docker push drugman21/numeric-app:""$GIT_COMMIT"""
                 }      
             }
       }
