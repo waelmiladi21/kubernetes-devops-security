@@ -45,7 +45,7 @@ attachments = [
           ],
           "accessory": [
             "type": "image",
-            "image_url": "https://raw.githubusercontent.com/waelmiladi21/kubernetes-devops-security/blob/main/slack-emojis/jenkins.png",
+            "image_url": "https://github.com/waelmiladi21/kubernetes-devops-security/blob/main/slack-emojis/jenkins.png?raw=true",
             "alt_text": "Slack Icon"
           ]
         ],
@@ -84,7 +84,7 @@ attachments = [
           ], 
           "accessory": [
             "type": "image",
-            "image_url": "https://raw.githubusercontent.com/waelmiladi21/kubernetes-devops-security/blob/main/slack-emojis/k8s.png",
+            "image_url": "https://github.com/waelmiladi21/kubernetes-devops-security/blob/main/slack-emojis/k8s.png?raw=true",
             "alt_text": "Kubernetes Icon"
           ],
         ],
